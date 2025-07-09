@@ -294,7 +294,7 @@ export default function Portfolio() {
 
       <div className="grid grid-cols-2 gap-6">
         <Card className="hover:shadow-md transition-shadow border-gray-100 group">
-          <a href="https://leetcode.com/yourusername" target="_blank" rel="noopener noreferrer">
+          <a href="https://leetcode.com/u/Bilal157/" target="_blank" rel="noopener noreferrer">
             <CardContent className="p-6 text-center hover:bg-indigo-50 transition-colors rounded-lg">
               <div className="w-12 h-12 bg-indigo-50 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-indigo-100 transition-colors">
                 <Code className="w-6 h-6 text-indigo-600" />
@@ -502,8 +502,8 @@ export default function Portfolio() {
                   artificial intelligence. Actively participating in coding competitions and tech events.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <Badge variant="outline" className="text-gray-700 bg-indigo-50 border-indigo-100">GPA: 3.8</Badge>
-                  <Badge variant="outline" className="text-gray-700 bg-indigo-50 border-indigo-100">Dean's List</Badge>
+                  <Badge variant="outline" className="text-gray-700 bg-indigo-50 border-indigo-100">CGPA: 3.5</Badge>
+                  
                 </div>
               </CardContent>
             </Card>
@@ -518,7 +518,7 @@ export default function Portfolio() {
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline" className="text-gray-700 bg-indigo-50 border-indigo-100">GPA: 3.9</Badge>
+                  <Badge variant="outline" className="text-gray-700 bg-indigo-50 border-indigo-100">GPA: 3.0 / 4.0</Badge>
                 </div>
               </CardContent>
             </Card>
@@ -533,7 +533,7 @@ export default function Portfolio() {
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline" className="text-gray-700 bg-indigo-50 border-indigo-100">GPA: 4.0</Badge>
+                  <Badge variant="outline" className="text-gray-700 bg-indigo-50 border-indigo-100">GPA: 4.0 / 4.0</Badge>
                 </div>
               </CardContent>
             </Card>
@@ -542,97 +542,101 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mb-6 rounded-full"></div>
-            <p className="text-lg text-gray-600">Some of my recent work and side projects</p>
-          </div>
+     {/* Projects Section */}
+<section id="projects" className="py-20 bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
+      <div className="w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mb-6 rounded-full"></div>
+      <p className="text-lg text-gray-600">Some of my recent work and side projects</p>
+    </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <Card
-                key={index}
-                className="hover:shadow-lg transition-shadow border-gray-100 group overflow-hidden"
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map((project, index) => (
+        <Card
+          key={index}
+          className="hover:shadow-lg transition-shadow border-gray-100 group overflow-hidden"
+        >
+          {/* Project Image */}
+          <div className="relative h-48 overflow-hidden">
+            <img
+              src={`/project-${index + 1}.jpg`} // Assuming you have images named project-1.jpg, project-2.jpg etc.
+              alt={project.title}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+          </div>
+          
+          <CardHeader>
+            <div className="flex items-start justify-between">
+              <CardTitle className="text-lg">{project.title}</CardTitle>
+              <Badge
+                variant={project.status === "Featured" ? "default" : "secondary"}
+                className={
+                  project.status === "Featured"
+                    ? "bg-gradient-to-r from-indigo-600 to-purple-600"
+                    : "bg-indigo-100 text-indigo-800"
+                }
               >
-                <div className="relative h-48 bg-gradient-to-br from-indigo-50 to-purple-50 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <Code className="w-12 h-12 text-indigo-400" />
-                </div>
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <CardTitle className="text-lg">{project.title}</CardTitle>
-                    <Badge
-                      variant={project.status === "Featured" ? "default" : "secondary"}
-                      className={
-                        project.status === "Featured"
-                          ? "bg-gradient-to-r from-indigo-600 to-purple-600"
-                          : "bg-indigo-100 text-indigo-800"
-                      }
-                    >
-                      {project.status}
-                    </Badge>
-                  </div>
-                  <CardDescription>{project.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-  <div className="flex flex-wrap gap-2 mb-4">
-    {project.tech.map((tech) => (
-      <Badge key={tech} variant="outline" className="text-xs text-gray-700 bg-indigo-50 border-indigo-100">
-        {tech}
-      </Badge>
-    ))}
+                {project.status}
+              </Badge>
+            </div>
+            <CardDescription>{project.description}</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-wrap gap-2 mb-4">
+              {project.tech.map((tech) => (
+                <Badge key={tech} variant="outline" className="text-xs text-gray-700 bg-indigo-50 border-indigo-100">
+                  {tech}
+                </Badge>
+              ))}
+            </div>
+            
+            <div className="flex gap-3">
+              {project.link && (
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex-1">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full border-indigo-200 text-indigo-600 hover:bg-indigo-50 hover:text-indigo-700"
+                  >
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    {project.link.includes('github') ? 'View Code' : 'Live Demo'}
+                  </Button>
+                </a>
+              )}
+              
+              {project.Github && (
+                <a href={project.Github} target="_blank" rel="noopener noreferrer" className="flex-1">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-gray-700"
+                  >
+                    <Github className="w-4 h-4 mr-2" />
+                    GitHub
+                  </Button>
+                </a>
+              )}
+              
+              {!project.link && !project.Github && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-gray-700"
+                  disabled
+                >
+                  <Code className="w-4 h-4 mr-2" />
+                  Private Project
+                </Button>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
   </div>
-  
-  <div className="flex gap-3">
-    {/* Demo Link Button - only shows if demoLink exists */}
-    {project.link && (
-      <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex-1">
-        <Button
-          variant="outline"
-          size="sm"
-          className="w-full border-indigo-200 text-indigo-600 hover:bg-indigo-50 hover:text-indigo-700"
-        >
-          <ExternalLink className="w-4 h-4 mr-2" />
-          {project.link.includes('github') ? 'View Code' : 'Live Demo'}
-        </Button>
-      </a>
-    )}
-    
-    {/* GitHub Link Button - only shows if githubLink exists */}
-    {project.Github && (
-      <a href={project.Github} target="_blank" rel="noopener noreferrer" className="flex-1">
-        <Button
-          variant="outline"
-          size="sm"
-          className="w-full border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-gray-700"
-        >
-          <Github className="w-4 h-4 mr-2" />
-          GitHub
-        </Button>
-      </a>
-    )}
-    
-    {/* Private Project - shows if no links exist */}
-    {!project.link && !project.Github && (
-      <Button
-        variant="outline"
-        size="sm"
-        className="w-full border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-gray-700"
-        disabled
-      >
-        <Code className="w-4 h-4 mr-2" />
-        Private Project
-      </Button>
-    )}
-  </div>
-</CardContent>             </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
+</section>
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
