@@ -5,16 +5,17 @@ export const metadata: Metadata = {
   title: 'v0 App',
   description: 'Created with v0',
   generator: 'v0.dev',
+
   verification: {
-    google: 'QHVHvgsYElKxoNmnL4eYL8uIh2UpF3LxGp-OiVc9UPo',
+    google: '6mSxMYTMw5kmbyWmDzciFKtttNE8uPIjs0rOMxIuafA',
   },
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="en">
       <body>{children}</body>
